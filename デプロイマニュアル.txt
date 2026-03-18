@@ -1,0 +1,26 @@
+# 1. 初期化と除外設定（.aiファイルを管理対象から外す）
+git init
+echo "*.ai" > .gitignore
+
+# 2. ファイル追加とコミット
+git add .
+git commit -m "Initial commit (excluded .ai files)"
+
+# 3. メインブランチ確定
+git branch -M main
+
+# 4. リモート登録（URLを差し替えて使用）
+git remote add origin [REMOTE_URL]
+
+# 5. 強制プッシュ
+git push -f origin main
+
+
+# 1. すべての修正内容をステージング（保存対象に指定）
+git add .
+
+# 2. 修正内容にメッセージを付けて記録
+git commit -m "Update content"
+
+# 3. リモートのmainブランチへプッシュ
+git push origin main
