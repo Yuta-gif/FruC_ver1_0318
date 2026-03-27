@@ -1,26 +1,28 @@
-# 1. 初期化と除外設定（.aiファイルを管理対象から外す）
+# 1. 初期化
 git init
-echo "*.ai" > .gitignore
 
-# 2. ファイル追加とコミット
+# 2. 【重要】除外設定（PowerShellで確実に認識させる形式）
+Set-Content -Path .gitignore -Value "*.ai" -Encoding UTF8
+
+# 3. ファイル追加（.ai が除外されていることを確認）
 git add .
-git commit -m "Initial commit (excluded .ai files)"
+git commit -m "Initial commit (excluded heavy files)"
 
-# 3. メインブランチ確定
+# 4. メインブランチ確定
 git branch -M main
 
-# 4. リモート登録（URLを差し替えて使用）
+# 5. リモート登録（URLを差し替えて使用）
 git remote add origin [REMOTE_URL]
 
-# 5. 強制プッシュ
+# 6. 強制プッシュ（GitHub側の初期ファイルを上書き）
 git push -f origin main
 
 
-# 1. すべての修正内容をステージング（保存対象に指定）
+# 1. 修正内容をステージング
 git add .
 
-# 2. 修正内容にメッセージを付けて記録
+# 2. 記録
 git commit -m "Update content"
 
-# 3. リモートのmainブランチへプッシュ
+# 3. プッシュ
 git push origin main
